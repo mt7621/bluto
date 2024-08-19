@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: wsi
+  name: employee-deploy
+  labels:
+    app: employee
+spec:
+  replicas: 2
+  selector:
+    matchLabels: 
+      app: employee
+  template:
+    metadata:
+      labels: 
+        app: employee
+    spec:
+      containers:
+      - name: employee
+        image: 690677342176.dkr.ecr.ap-northeast-2.amazonaws.com/employee:latest
+        ports:
+        - containerPort: 8080
+        resources:
+          limits:
+            cpu: 600m
+          requests:
+            cpu: 300m
+        env:
+          - name: MYSQL_USER
+            value: "admin"
+          - name: MYSQL_PASSWORD
+            value: "Skill53##"
+          - name: MYSQL_HOST
+            value: "apdev-rds-instance.ca0pxlxtp9bn.ap-northeast-2.rds.amazonaws.com"
+          - name: MYSQL_PORT
+            value: "3306"
+          - name: MYSQL_DBNAME
+            value: "dev"
+        

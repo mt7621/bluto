@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: wsi
+  name: token-deploy
+  labels:
+    app: token
+spec:
+  replicas: 2
+  selector:
+    matchLabels: 
+      app: token
+  template:
+    metadata:
+      labels: 
+        app: token
+    spec:
+      containers:
+      - name: token
+        image: 690677342176.dkr.ecr.ap-northeast-2.amazonaws.com/token:latest
+        ports:
+        - containerPort: 8080
+        resources:
+          limits:
+            cpu: 600m
+          requests:
+            cpu: 300m
+        
