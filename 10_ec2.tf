@@ -48,6 +48,6 @@ resource "aws_instance" "bastion_ec2" {
   ]
 
   tags = {
-    Name = "wsi-bastion"
+    Name = "apdev-bastion"
   }
 }

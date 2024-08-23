@@ -16,6 +16,7 @@ resource "aws_subnet" "app_subnet_a" {
 
   tags = {
     Name = "wsi-app-a"
+    "karpenter.sh/discovery" = "wsi-eks-cluster" 
   }
 }
 
@@ -27,6 +28,7 @@ resource "aws_subnet" "app_subnet_b" {
 
   tags = {
     Name = "wsi-app-b"
+    "karpenter.sh/discovery" = "wsi-eks-cluster" 
   }
 }
 

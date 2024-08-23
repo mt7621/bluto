@@ -1,0 +1,47 @@
+{
+  "Name": "employee-get-rule",
+  "Priority": 2,
+  "Statement": {
+    "AndStatement": {
+      "Statements": [
+        {
+          "ByteMatchStatement": {
+            "SearchString": "GET",
+            "FieldToMatch": {
+              "Method": {}
+            },
+            "TextTransformations": [
+              {
+                "Priority": 0,
+                "Type": "NONE"
+              }
+            ],
+            "PositionalConstraint": "EXACTLY"
+          }
+        },
+        {
+          "RegexMatchStatement": {
+            "RegexString": "^(first_name=[^&]+&last_name=[^&]+|last_name=[^&]+&first_name=[^&]+)$",
+            "FieldToMatch": {
+              "QueryString": {}
+            },
+            "TextTransformations": [
+              {
+                "Priority": 0,
+                "Type": "NONE"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "Action": {
+    "Allow": {}
+  },
+  "VisibilityConfig": {
+    "SampledRequestsEnabled": true,
+    "CloudWatchMetricsEnabled": true,
+    "MetricName": "employee-get-rule"
+  }
+}

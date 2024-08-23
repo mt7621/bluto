@@ -39,6 +39,7 @@ resource "aws_db_instance" "main" {
   engine = "mysql"
   engine_version = "8.0.36"
   instance_class = "db.t3.micro"
+  storage_type = "gp3"
   port = "3306"
   username = "admin"
   password = "Skill53##"

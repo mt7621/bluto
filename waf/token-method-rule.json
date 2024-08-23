@@ -1,0 +1,52 @@
+{
+    "Name": "token-method-rule",
+    "Priority": 4,
+    "Statement": {
+        "AndStatement": {
+            "Statements": [
+                {
+                    "ByteMatchStatement": {
+                        "SearchString": "/v1/token",
+                        "FieldToMatch": {
+                            "UriPath": {}
+                        },
+                        "TextTransformations": [
+                            {
+                                "Priority": 0,
+                                "Type": "NONE"
+                            }
+                        ],
+                        "PositionalConstraint": "EXACTLY"
+                    }
+                },
+                {
+                    "NotStatement": {
+                        "Statement": {
+                            "ByteMatchStatement": {
+                                "SearchString": "POST",
+                                "FieldToMatch": {
+                                    "Method": {}
+                                },
+                                "TextTransformations": [
+                                    {
+                                        "Priority": 0,
+                                        "Type": "NONE"
+                                    }
+                                ],
+                                "PositionalConstraint": "EXACTLY"
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    },
+    "Action": {
+        "Block": {}
+    },
+    "VisibilityConfig": {
+        "SampledRequestsEnabled": true,
+        "CloudWatchMetricsEnabled": true,
+        "MetricName": "token-method-rule"
+    }
+}

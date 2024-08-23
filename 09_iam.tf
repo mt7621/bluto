@@ -1,5 +1,5 @@
 resource "aws_iam_role" "bastion_role" {
-  name = "wsi-bastion-role"
+  name = "apdev-bastion-role"
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
