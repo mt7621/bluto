@@ -1,0 +1,214 @@
+{
+  "Name": "employee-body-rule",
+  "Priority": 0,
+  "Statement": {
+    "AndStatement": {
+      "Statements": [
+        {
+          "ByteMatchStatement": {
+            "SearchString": "/v1/employee",
+            "FieldToMatch": {
+              "UriPath": {}
+            },
+            "TextTransformations": [
+              {
+                "Priority": 0,
+                "Type": "NONE"
+              }
+            ],
+            "PositionalConstraint": "EXACTLY"
+          }
+        },
+        {
+          "ByteMatchStatement": {
+            "SearchString": "POST",
+            "FieldToMatch": {
+              "Method": {}
+            },
+            "TextTransformations": [
+              {
+                "Priority": 0,
+                "Type": "NONE"
+              }
+            ],
+            "PositionalConstraint": "EXACTLY"
+          }
+        },
+        {
+          "OrStatement": {
+            "Statements": [
+              {
+                "NotStatement": {
+                  "Statement": {
+                    "ByteMatchStatement": {
+                      "SearchString": "emp_no",
+                      "FieldToMatch": {
+                        "JsonBody": {
+                          "MatchPattern": {
+                            "All": {}
+                          },
+                          "MatchScope": "KEY",
+                          "InvalidFallbackBehavior": "MATCH",
+                          "OversizeHandling": "CONTINUE"
+                        }
+                      },
+                      "TextTransformations": [
+                        {
+                          "Priority": 0,
+                          "Type": "NONE"
+                        }
+                      ],
+                      "PositionalConstraint": "EXACTLY"
+                    }
+                  }
+                }
+              },
+              {
+                "NotStatement": {
+                  "Statement": {
+                    "ByteMatchStatement": {
+                      "SearchString": "birth_date",
+                      "FieldToMatch": {
+                        "JsonBody": {
+                          "MatchPattern": {
+                            "All": {}
+                          },
+                          "MatchScope": "KEY",
+                          "InvalidFallbackBehavior": "MATCH",
+                          "OversizeHandling": "CONTINUE"
+                        }
+                      },
+                      "TextTransformations": [
+                        {
+                          "Priority": 0,
+                          "Type": "NONE"
+                        }
+                      ],
+                      "PositionalConstraint": "EXACTLY"
+                    }
+                  }
+                }
+              },
+              {
+                "NotStatement": {
+                  "Statement": {
+                    "ByteMatchStatement": {
+                      "SearchString": "first_name",
+                      "FieldToMatch": {
+                        "JsonBody": {
+                          "MatchPattern": {
+                            "All": {}
+                          },
+                          "MatchScope": "KEY",
+                          "InvalidFallbackBehavior": "MATCH",
+                          "OversizeHandling": "CONTINUE"
+                        }
+                      },
+                      "TextTransformations": [
+                        {
+                          "Priority": 0,
+                          "Type": "NONE"
+                        }
+                      ],
+                      "PositionalConstraint": "EXACTLY"
+                    }
+                  }
+                }
+              },
+              {
+                "NotStatement": {
+                  "Statement": {
+                    "ByteMatchStatement": {
+                      "SearchString": "last_name",
+                      "FieldToMatch": {
+                        "JsonBody": {
+                          "MatchPattern": {
+                            "All": {}
+                          },
+                          "MatchScope": "KEY",
+                          "InvalidFallbackBehavior": "MATCH",
+                          "OversizeHandling": "CONTINUE"
+                        }
+                      },
+                      "TextTransformations": [
+                        {
+                          "Priority": 0,
+                          "Type": "NONE"
+                        }
+                      ],
+                      "PositionalConstraint": "EXACTLY"
+                    }
+                  }
+                }
+              },
+              {
+                "NotStatement": {
+                  "Statement": {
+                    "ByteMatchStatement": {
+                      "SearchString": "gender",
+                      "FieldToMatch": {
+                        "JsonBody": {
+                          "MatchPattern": {
+                            "All": {}
+                          },
+                          "MatchScope": "KEY",
+                          "InvalidFallbackBehavior": "MATCH",
+                          "OversizeHandling": "CONTINUE"
+                        }
+                      },
+                      "TextTransformations": [
+                        {
+                          "Priority": 0,
+                          "Type": "NONE"
+                        }
+                      ],
+                      "PositionalConstraint": "EXACTLY"
+                    }
+                  }
+                }
+              },
+              {
+                "NotStatement": {
+                  "Statement": {
+                    "ByteMatchStatement": {
+                      "SearchString": "hire_date",
+                      "FieldToMatch": {
+                        "JsonBody": {
+                          "MatchPattern": {
+                            "All": {}
+                          },
+                          "MatchScope": "KEY",
+                          "InvalidFallbackBehavior": "MATCH",
+                          "OversizeHandling": "CONTINUE"
+                        }
+                      },
+                      "TextTransformations": [
+                        {
+                          "Priority": 0,
+                          "Type": "NONE"
+                        }
+                      ],
+                      "PositionalConstraint": "EXACTLY"
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "Action": {
+    "Block": {
+      "CustomResponse": {
+        "ResponseCode": 403
+      }
+    }
+  },
+  "VisibilityConfig": {
+    "SampledRequestsEnabled": true,
+    "CloudWatchMetricsEnabled": true,
+    "MetricName": "1"
+  }
+}
